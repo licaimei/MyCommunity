@@ -31,5 +31,8 @@ public class Role {
 	//请自己生成get/set器
 	
 	
+	//外三等奖三科
+	
+	
 
 }
