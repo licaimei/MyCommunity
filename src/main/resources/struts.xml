@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" namespace="/" extends="struts-default">
+		<action name="index" class="myCommunity.web.action.ForumAction"
+			method="index">
+			<result name="index">/WEB-INF/jsp/index.jsp</result>
+		</action>
+		<action name="login" class="myCommunity.web.action.LoginAction"
+			method="login">
+			<result name="login">/WEB-INF/jsp/login.jsp</result>
+		</action>
+		<action name="checkLogin" class="myCommunity.web.action.LoginAction"
+			method="checkLogin">
+			<result name="index" type="redirect">/index</result>
+			<result name="login">/WEB-INF/jsp/login.jsp</result>
+		</action>
+		<action name="remove" class="myCommunity.web.action.LoginAction"
+			method="remove">
+			<result name="index" type="redirect">/index</result>
+		</action>
+		<action name="register" class="myCommunity.web.action.RegisterAction"
+			method="register">
+			<result name="register">/WEB-INF/jsp/register.jsp</result>
+		</action>
+		<action name="saveRegister" class="myCommunity.web.action.RegisterAction"
+			method="saveRegister">
+			<result name="login" type="redirect">/login</result>
+			<result name="register">/WEB-INF/jsp/register.jsp</result>
+		</action>
+		<action name="topic-list" class="myCommunity.web.action.TopicAction"
+			method="list">
+			<result name="topic-list">/WEB-INF/jsp/topic-list.jsp</result>
+		</action>
+		<action name="remove" class="myCommunity.web.action.LoginAction"
+			method="remove">
+			<result name="index" type="redirect">/index</result>
+		</action>		
+		<action name="comment" class="myCommunity.web.action.CommentAction"
+			method="comment">
+			<result name="comment">/WEB-INF/jsp/comment.jsp</result>
+		</action>
+	</package>
+	<package name="personal" namespace="/personal" extends="struts-default">
+		<interceptors>
+			<interceptor name="security"
+				class="myCommunity.web.interceptor.SecurityInterceptor" />
+			<interceptor-stack name="personalStack">
+				<interceptor-ref name="security" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="personalStack" />
+    	<global-results>
+    		<result name="login" type="redirect">/login</result>
+    	</global-results>
+    	 <action name="person">
+			<result>/WEB-INF/jsp/personal/person.jsp</result>
+		</action>
+		<action name="update" class="myCommunity.web.action.LoginAction" method="update">
+        	<result name="login" type="redirect">../login</result>
+        	<result name="person">/WEB-INF/jsp/personal/person.jsp</result>
+        </action>
+	</package>
+</struts>
