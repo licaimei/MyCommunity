@@ -25,14 +25,7 @@ public class Role {
 		this.name = name;
 	}
 	
-	//这是我刚刚加的代码
-	private int age;
-	
-	//请自己生成get/set器
-	
-	
-	//外三等奖三科
-	
+    //新建一个字段
 	
 
 }
